@@ -1,0 +1,15 @@
+{
+    "name": "Lingually",
+    "model": "mistral-large-latest",
+
+    "login_behaviour":{
+        "login_mode": "main_profile",
+        "main_profile": "Qi",
+        "last_profile": "Qi"
+    },
+
+    "paths":{
+        "profiles": "./profiles", 
+        "system_prompts": "./system-prompts"
+    }
+}
