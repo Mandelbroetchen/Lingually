@@ -4,12 +4,25 @@
 
     "login_behaviour":{
         "login_mode": "main_profile",
-        "main_profile": "Lingually",
-        "last_profile": "Lingually"
+        "main_profile": "",
+        "last_profile": ""
     },
 
     "paths":{
         "profiles": "./profiles", 
         "system_prompts": "./system-prompts"
-    }
+    },
+
+    "languages":[
+        "Chinese (Mandarin)",
+        "Dutch",
+        "English",
+        "French",
+        "German",
+        "Italian",
+        "Japanese",
+        "Korean",
+        "Portuguese",
+        "Spanish"
+    ]
 }
