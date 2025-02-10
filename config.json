@@ -1,12 +1,11 @@
 {
     "name": "Lingually",
     "model": "mistral-large-latest",
+    "about": "https://github.com/Mandelbroetchen/Lingually",
 
-    "login_behaviour":{
-        "login_mode": "main_profile",
-        "main_profile": "",
-        "last_profile": ""
-    },
+    "login_mode": "main_profile",
+    "main_profile": "",
+    "last_profile": "",
 
     "paths":{
         "profiles": "./profiles", 
@@ -24,5 +23,19 @@
         "Korean",
         "Portuguese",
         "Spanish"
+    ],
+
+    "resolutions": [
+        "320x240",
+        "400x240",
+        "480x320",
+        "512x384",
+        "576x432",
+        "640x480",
+        "800x480",
+        "854x480",
+        "960x540",
+        "1024x576"
     ]
+
 }
