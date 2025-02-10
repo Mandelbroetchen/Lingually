@@ -36,6 +36,10 @@
         "854x480",
         "960x540",
         "1024x576"
-    ]
+    ],
 
+    "system_prompts":{
+        "simple_reply": "Answer concisely, as few words as possible. ",
+        "word_definition": "Give a concise definition of the word. Use as few sentences as possible. Don't use any unecessary sentences. "
+    }
 }
