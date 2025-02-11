@@ -37,7 +37,7 @@ Ensure you have Python installed on your system.
 
 4. Set up the environment variables:
 
-   Create a `.env` file in the project root and add your Mistral AI API key:
+   Create a `.env` file in the project root and add your [Mistral AI API key](https://console.mistral.ai/):
    ```
    API_KEY=your_mistral_api_key
    ```
