@@ -1,3 +1,6 @@
 .env
 config.json
 profiles
+build
+dist
+app.spec
