@@ -13,6 +13,11 @@ import utilities
 
 
 class Toplevel(tk.Toplevel):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.transient()
+        self.grab_set()
+
     @property
     def app(self):
         try:

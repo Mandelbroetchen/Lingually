@@ -17,20 +17,26 @@ class CreateProfileWin(Toplevel):
         super().__init__(parent)
         self._title = title
         self.title(self._title)
-        self.geometry('300x600')
+        self.geometry('480x320')
+        self.resizable(False, False)
 
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(3, weight=1)
 
+        for i in [3]:
+            self.rowconfigure(i, weight=1)
+        for i in [0,1,2,3]:
+            self.columnconfigure(i, weight=1)
+        padx, pady = 2, 2
         # Enter name
-        tk.Label(self, text="Name:").grid(row=0, column=0, padx=10, pady=10, sticky="w")
+        tk.Label(self, text="Name:").grid(row=0, column=0, padx=padx, pady=pady, sticky="nsew")
         self.name_entry = tk.Entry(self)
-        self.name_entry.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
+        self.name_entry.grid(row=0, column=1, columnspan=3, padx=padx, pady=pady, sticky="nsew")
 
         # Select color
-        tk.Label(self, text="Color:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
+        tk.Label(self, text="Color:").grid(row=1, column=0, padx=padx, pady=pady, sticky="nsew")
         self.color_btn = tk.Button(self, text="Choose Color", command=self.choose_color)
-        self.color_btn.grid(row=1, column=1, padx=10, pady=10, sticky="nsew")
+        self.color_btn.grid(row=1, column=1, columnspan=3, padx=padx, pady=pady, sticky="nsew")
         self.selected_color = None
 
         # Function to add languages to the Listbox
@@ -49,16 +55,16 @@ class CreateProfileWin(Toplevel):
                 self.languages_listbox.delete(index)
 
         # Button to add languages
-        self.add_button = tk.Button(self, text="Add Languages", command=add_languages)
-        self.add_button.grid(row=2, column=0, padx=10, pady=5, sticky="nsew")
+        self.add_button = tk.Button(self, text="Add desired Languages", command=add_languages)
+        self.add_button.grid(row=2, column=0, padx=padx, pady=pady, sticky="nsew",)
 
         # Button to remove selected languages
         self.remove_button = tk.Button(self, text="Remove Selected", command=remove_languages)
-        self.remove_button.grid(row=2, column=1, padx=10, pady=5, sticky="nsew")
+        self.remove_button.grid(row=2, column=1, padx=padx, pady=pady, sticky="nsew")
 
         # Listbox to display selected languages
         self.languages_listbox = tk.Listbox(self, height=5, width=30, selectmode=tk.MULTIPLE)
-        self.languages_listbox.grid(row=3, column=0, columnspan=2, padx=10, pady=10, sticky="nsew")
+        self.languages_listbox.grid(row=3, column=0, columnspan=2, padx=padx, pady=pady, sticky="nsew")
 
         # Function to add natives to the Listbox
         def add_natives():
@@ -76,16 +82,16 @@ class CreateProfileWin(Toplevel):
                 self.natives_listbox.delete(index)
 
         # Button to add natives
-        self.add_button = tk.Button(self, text="Add natives", command=add_natives)
-        self.add_button.grid(row=4, column=0, padx=10, pady=5, sticky="nsew")
+        self.add_button = tk.Button(self, text="Add Native languages", command=add_natives)
+        self.add_button.grid(row=2, column=2, padx=padx, pady=pady, sticky="nsew")
 
         # Button to remove selected natives
         self.remove_button = tk.Button(self, text="Remove Selected", command=remove_natives)
-        self.remove_button.grid(row=4, column=1, padx=10, pady=5, sticky="nsew")
+        self.remove_button.grid(row=2, column=3, padx=padx, pady=pady, sticky="nsew")
 
         # Listbox to display selected natives
         self.natives_listbox = tk.Listbox(self, height=5, width=30, selectmode=tk.MULTIPLE)
-        self.natives_listbox.grid(row=5, column=0, columnspan=2, padx=10, pady=10, sticky="nsew")
+        self.natives_listbox.grid(row=3, column=2, columnspan=2, padx=padx, pady=pady, sticky="nsew")
 
         # Submit
         def on_click():
@@ -95,7 +101,7 @@ class CreateProfileWin(Toplevel):
             natives = self.natives_listbox.get(0, tk.END)
             self.create_profile(name, color, languages, natives)
         submit_btn = tk.Button(self, text="Create Profile", command=on_click)
-        submit_btn.grid(row=6, column=0, columnspan=2, pady=10, sticky="nsew")
+        submit_btn.grid(row=4, column=0, columnspan=4, padx=padx, pady=pady, sticky="nsew")
 
     def choose_color(self):
         color_code = colorchooser.askcolor(title="Choose a color")[1]  # Get HEX color

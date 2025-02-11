@@ -12,17 +12,66 @@
         "system_prompts": "./system-prompts"
     },
 
-    "languages":[
+    "languages": [
+        "Albanian",
+        "Arabic",
+        "Basque",
+        "Bengali",
+        "Bulgarian",
+        "Catalan",
         "Chinese (Mandarin)",
+        "Chinese (Cantonese)",
+        "Croatian",
+        "Czech",
+        "Danish",
         "Dutch",
         "English",
+        "Estonian",
+        "Filipino (Tagalog)",
+        "Finnish",
         "French",
+        "Georgian",
         "German",
+        "Greek",
+        "Hausa",
+        "Hebrew",
+        "Hindi",
+        "Hungarian",
+        "Icelandic",
+        "Indonesian",
+        "Irish Gaelic",
         "Italian",
         "Japanese",
         "Korean",
+        "Latvian",
+        "Lithuanian",
+        "Malay",
+        "Maltese",
+        "Marathi",
+        "Norwegian",
+        "Pashto",
+        "Persian (Farsi)",
+        "Polish",
         "Portuguese",
-        "Spanish"
+        "Punjabi",
+        "Romanian",
+        "Russian",
+        "Scottish Gaelic",
+        "Serbian",
+        "Slovak",
+        "Slovenian",
+        "Spanish",
+        "Swahili",
+        "Swedish",
+        "Tamil",
+        "Thai",
+        "Turkish",
+        "Ukrainian",
+        "Urdu",
+        "Vietnamese",
+        "Welsh",
+        "Yoruba",
+        "Zulu"
     ],
 
     "resolutions": [
@@ -40,6 +89,6 @@
 
     "system_prompts":{
         "simple_reply": "Answer concisely, as few words as possible. ",
-        "word_definition": "Give a concise definition of the word. Use as few sentences as possible. Don't use any unecessary sentences. "
+        "word_definition": "Give a concise definition of the word. Use as few sentences as possible. Don't use any unecessary sentences. Imitate the definition of a dictionary. Use bullet points to demonstrate multiple definitions. "
     }
 }

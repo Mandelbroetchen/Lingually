@@ -6,6 +6,8 @@ from tkinter import messagebox, colorchooser
 import langcodes
 import webbrowser
 from mistralai import Mistral
+from PIL import Image, ImageTk
+
 
 import os, sys
 import re, json
@@ -24,20 +26,36 @@ class App:
 
         self.root.title(self.name)
         self.root.geometry('640x480')
+        icon_image = Image.open("icon.png")
+        self.icon = ImageTk.PhotoImage(icon_image)
+        self.root.iconphoto(True, self.icon)
+
 
         menu_bar = tk.Menu(self.root)
 
-        # Edit Menu
-        edit_menu = tk.Menu(menu_bar, tearoff=0)
-        edit_menu.add_command(label="Add word", command=lambda: AddWordWin(self.root))
-        edit_menu.add_command(label="Add words from text")
-        menu_bar.add_cascade(label="Edit", menu=edit_menu)
+
 
         # Profile Menu
         profile_menu = tk.Menu(menu_bar, tearoff=0)
         profile_menu.add_command(label="New profile", command=lambda: CreateProfileWin(self.root))
+        profile_menu.add_command(label="Switch profile*")
+        profile_menu.add_command(label="Manage profiles*")
+
         menu_bar.add_cascade(label="Profile", menu=profile_menu)
 
+        # Edit Menu
+        edit_menu = tk.Menu(menu_bar, tearoff=0)
+        edit_menu.add_command(label="Add word", command=lambda: AddWordWin(self.root))
+        edit_menu.add_command(label="Add words from paragraph*")
+        menu_bar.add_cascade(label="Edit", menu=edit_menu)
+
+        # Settings Menu
+        edit_menu = tk.Menu(menu_bar, tearoff=0)
+        edit_menu.add_command(label="Set API key*")
+        edit_menu.add_command(label="APP Preference*")
+        edit_menu.add_command(label="Profile Preference*")
+        menu_bar.add_cascade(label="Settings", menu=edit_menu)
+        
         # Display Menu
         display_menu = tk.Menu(menu_bar, tearoff=0)
         for res in self.config["resolutions"]:

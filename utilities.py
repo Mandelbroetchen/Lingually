@@ -12,16 +12,17 @@ def add_language(languages):
 
     dialog = tk.Toplevel()
     dialog.title("Select Languages")
-    dialog.geometry("300x400")
-
+    dialog.geometry("300x500")
+    dialog.rowconfigure(0, weight=1)
+    dialog.columnconfigure(0, weight=1)
     listbox = tk.Listbox(dialog, selectmode=tk.MULTIPLE)
-    listbox.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+    listbox.grid(row=0, column=0, padx=2, pady=2, sticky="nsew")
 
     for lang in languages:
         listbox.insert(tk.END, lang)
 
-    btn_select = tk.Button(dialog, text="OK", command=on_select)
-    btn_select.pack(pady=10)
+    btn_select = tk.Button(dialog, text="Select", command=on_select)
+    btn_select.grid(row=1, column=0, padx=2, pady=2, sticky="nsew")
 
     dialog.transient()  # Keep it on top of the main window
     dialog.grab_set()  # Make modal
