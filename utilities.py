@@ -34,7 +34,6 @@ def add_language(languages):
 def get_contrast_color(hex_color):
     if hex_color is None:
         return "#000000"
-    """Returns black or white for better contrast against the given background color."""
     hex_color = hex_color.lstrip('#')
     r, g, b = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
     brightness = (r * 299 + g * 587 + b * 114) / 1000
