@@ -1,0 +1,97 @@
+{
+    "name": "Lingually",
+    "model": {
+        "name": "mistral-large-latest",
+        "api_key": "YOUR_API_KEY_HERE",
+        "tempreture": 3
+    },
+    "about": "https://github.com/Mandelbroetchen/Lingually",
+
+    "login_with": null,
+    "main_profile": null,
+    "last_profile": null,
+
+    "paths":{
+        "profiles": "./profiles"
+    },
+
+    "languages": [
+        "Albanian",
+        "Arabic",
+        "Basque",
+        "Bengali",
+        "Bulgarian",
+        "Catalan",
+        "Chinese (Mandarin)",
+        "Chinese (Cantonese)",
+        "Croatian",
+        "Czech",
+        "Danish",
+        "Dutch",
+        "English",
+        "Estonian",
+        "Filipino (Tagalog)",
+        "Finnish",
+        "French",
+        "Georgian",
+        "German",
+        "Greek",
+        "Hausa",
+        "Hebrew",
+        "Hindi",
+        "Hungarian",
+        "Icelandic",
+        "Indonesian",
+        "Irish Gaelic",
+        "Italian",
+        "Japanese",
+        "Korean",
+        "Latvian",
+        "Lithuanian",
+        "Malay",
+        "Maltese",
+        "Marathi",
+        "Norwegian",
+        "Pashto",
+        "Persian (Farsi)",
+        "Polish",
+        "Portuguese",
+        "Punjabi",
+        "Romanian",
+        "Russian",
+        "Scottish Gaelic",
+        "Serbian",
+        "Slovak",
+        "Slovenian",
+        "Spanish",
+        "Swahili",
+        "Swedish",
+        "Tamil",
+        "Thai",
+        "Turkish",
+        "Ukrainian",
+        "Urdu",
+        "Vietnamese",
+        "Welsh",
+        "Yoruba",
+        "Zulu"
+    ],
+
+    "resolutions": [
+        "320x240",
+        "400x240",
+        "480x320",
+        "512x384",
+        "576x432",
+        "640x480",
+        "800x480",
+        "854x480",
+        "960x540",
+        "1024x576"
+    ],
+
+    "system_prompts":{
+        "simple_reply": "Answer concisely, as few words as possible. ",
+        "word_definition": "Give a concise definition of the word. Use as few sentences as possible. Don't use any unecessary sentences. Imitate the definition of a dictionary. Use bullet points to demonstrate multiple definitions. "
+    }
+}

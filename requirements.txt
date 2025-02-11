@@ -1,0 +1,4 @@
+langcodes
+mistralai
+Pillow
+python-dotenv

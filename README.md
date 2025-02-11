@@ -35,11 +35,13 @@ Ensure you have Python installed on your system.
    pip install -r requirements.txt
    ```
 
-4. Set up the environment variables:
-
-   Create a `.env` file in the project root and add your [Mistral AI API key](https://console.mistral.ai/api-keys/):
-   ```
-   API_KEY=your_mistral_api_key
+4. Rename `config.json.example` to `config.json` and insert your API key:
+   ```json
+   "model": {
+        "name": "mistral-large-latest",
+        "api_key": "YOUR_API_KEY_HERE",
+        "tempreture": 3
+   }
    ```
 
 5. Run the application:
