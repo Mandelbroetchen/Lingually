@@ -33,7 +33,8 @@ class AddWordWin(Toplevel):
         self.language_var = tk.StringVar()
         self.language_dropdown = ttk.Combobox(self, textvariable=self.language_var, values=self.languages, state="readonly", width=27)
         self.language_dropdown.grid(row=1, column=1, padx=padx, pady=pady, sticky="nsew")
-        self.language_dropdown.current(0)
+        try: self.language_dropdown.current(0)
+        except: pass
 
         # Description Label and Text Field
         tk.Label(self, text="Definition:").grid(row=2, column=0, padx=padx, pady=pady, sticky="nw")

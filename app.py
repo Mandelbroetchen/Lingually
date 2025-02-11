@@ -15,6 +15,7 @@ import re, json
 import utilities
 from windows.CreateProfileWin import *
 from windows.AddWordWin import *
+from windows.SwitchProfileWin import *
 
 class App:
     def __init__(self, config, llm_client):
@@ -22,7 +23,7 @@ class App:
         self.config = config
         self.root = tk.Tk()
         self.root.app = self
-        self.profile = "Alex"
+        self.profile = None
 
         self.root.title(self.name)
         self.root.geometry('640x480')
@@ -30,15 +31,11 @@ class App:
         self.icon = ImageTk.PhotoImage(icon_image)
         self.root.iconphoto(True, self.icon)
 
-
         menu_bar = tk.Menu(self.root)
-
-
-
         # Profile Menu
         profile_menu = tk.Menu(menu_bar, tearoff=0)
         profile_menu.add_command(label="New profile", command=lambda: CreateProfileWin(self.root))
-        profile_menu.add_command(label="Switch profile*")
+        profile_menu.add_command(label="Switch profile", command=lambda: SwitchProfileWin(self.root))
         profile_menu.add_command(label="Manage profiles*")
 
         menu_bar.add_cascade(label="Profile", menu=profile_menu)
@@ -70,7 +67,7 @@ class App:
         self.root.config(menu=menu_bar)
 
 
-        if len(self.profiles_names) == 0:
+        if len(self.profile_names) == 0:
             create_profile_win = CreateProfileWin(self.root)
             create_profile_win.focus_set()
 
@@ -79,20 +76,23 @@ class App:
         return self.config['name']
 
     @property
-    def profiles_names(self):
+    def profile_names(self):
         profiles_path = Path(self.config['paths']['profiles'])
-        profiles_names = [dir.name for dir in profiles_path.iterdir() if dir.is_dir()]
-        return profiles_names
+        profile_names = [dir.name for dir in profiles_path.iterdir() if dir.is_dir()]
+        return profile_names
     
-    @property
-    def profile_info(self):
-        path = Path(self.config["paths"]["profiles"])/self.profile/"info.json"
+    def get_profile_info(self, profile_name):
+        path = Path(self.config["paths"]["profiles"])/profile_name/"info.json"
         if path.exists():
             with open(str(path),'r') as f:
                 info = json.load(f)
             return info
         else:
             return None
+    
+    @property
+    def profile_info(self):
+        return self.get_profile_info(self.profile)
     
     def profile_write_vocabs(self, new_vocabs):
         path = Path(self.config["paths"]["profiles"])/self.profile/"vocabs.json"
