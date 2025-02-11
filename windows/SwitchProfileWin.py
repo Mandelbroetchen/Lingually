@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 import tkinter as tk
-from tkinter import messagebox, colorchooser
+from tkinter import messagebox, colorchooser, ttk
 import langcodes
 from mistralai import Mistral
 

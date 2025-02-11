@@ -1,15 +1,18 @@
 {
     "name": "Lingually",
-    "model": "mistral-large-latest",
+    "model": {
+        "name": "mistral-large-latest",
+        "api_key": "xhhFwIHu1vqFzaa3nCzptBZOZjEe7Dwl",
+        "tempreture": 3
+    },
     "about": "https://github.com/Mandelbroetchen/Lingually",
 
-    "login_mode": "main_profile",
-    "main_profile": "",
-    "last_profile": "",
+    "login_with": null,
+    "main_profile": null,
+    "last_profile": null,
 
     "paths":{
-        "profiles": "./profiles", 
-        "system_prompts": "./system-prompts"
+        "profiles": "./profiles"
     },
 
     "languages": [

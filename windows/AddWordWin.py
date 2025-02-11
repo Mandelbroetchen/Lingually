@@ -23,12 +23,12 @@ class AddWordWin(Toplevel):
             self.columnconfigure(i, weight=1)
 
         # Word Label and Entry
-        tk.Label(self, text="Word:").grid(row=0, column=0, padx=padx, pady=pady, sticky="w")
-        self.word_entry = tk.Entry(self, width=30)
+        ttk.Label(self, text="Word:").grid(row=0, column=0, padx=padx, pady=pady, sticky="w")
+        self.word_entry = ttk.Entry(self, width=30)
         self.word_entry.grid(row=0, column=1, padx=padx, pady=pady, sticky="nsew")
 
         # Language Label and Dropdown
-        tk.Label(self, text="Language:").grid(row=1, column=0, padx=padx, pady=pady, sticky="w")
+        ttk.Label(self, text="Language:").grid(row=1, column=0, padx=padx, pady=pady, sticky="w")
         self.languages = sorted(self.app.profile_info["languages"])
         self.language_var = tk.StringVar()
         self.language_dropdown = ttk.Combobox(self, textvariable=self.language_var, values=self.languages, state="readonly", width=27)
@@ -37,16 +37,16 @@ class AddWordWin(Toplevel):
         except: pass
 
         # Description Label and Text Field
-        tk.Label(self, text="Definition:").grid(row=2, column=0, padx=padx, pady=pady, sticky="nw")
+        ttk.Label(self, text="Definition:").grid(row=2, column=0, padx=padx, pady=pady, sticky="nw")
         self.description_text = tk.Text(self, width=30, height=5)
         self.description_text.grid(row=2, column=1, columnspan=1, padx=padx, pady=pady, sticky="nsew")
         
         # Submit Button
-        self.generate_button = tk.Button(self, text="Generate Definition", command=self.generate)
+        self.generate_button = ttk.Button(self, text="Generate Definition", command=self.generate)
         self.generate_button.grid(row=3, column=1, columnspan=1, padx=padx, pady=pady, sticky="nsew")
         
         # Submit Button
-        self.submit_button = tk.Button(self, text="Submit", command=self.submit_word)
+        self.submit_button = ttk.Button(self, text="Submit", command=self.submit_word)
         self.submit_button.grid(row=4, column=1, columnspan=1, padx=padx, pady=pady, sticky="nsew")
     
     def generate(self):

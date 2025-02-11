@@ -16,10 +16,9 @@ import utilities
 from windows.CreateProfileWin import *
 from windows.AddWordWin import *
 from windows.SwitchProfileWin import *
-
+from windows.SetModelWin import*
 class App:
-    def __init__(self, config, llm_client):
-        self.llm_client = llm_client
+    def __init__(self, config):
         self.config = config
         self.root = tk.Tk()
         self.root.app = self
@@ -34,21 +33,21 @@ class App:
         menu_bar = tk.Menu(self.root)
         # Profile Menu
         profile_menu = tk.Menu(menu_bar, tearoff=0)
-        profile_menu.add_command(label="New profile", command=lambda: CreateProfileWin(self.root))
-        profile_menu.add_command(label="Switch profile", command=lambda: SwitchProfileWin(self.root))
-        profile_menu.add_command(label="Manage profiles*")
+        profile_menu.add_command(label="New Profile", command=lambda: CreateProfileWin(self.root))
+        profile_menu.add_command(label="Switch Profile", command=lambda: SwitchProfileWin(self.root))
+        profile_menu.add_command(label="Manage Profiles*")
 
         menu_bar.add_cascade(label="Profile", menu=profile_menu)
 
         # Edit Menu
         edit_menu = tk.Menu(menu_bar, tearoff=0)
-        edit_menu.add_command(label="Add word", command=lambda: AddWordWin(self.root))
-        edit_menu.add_command(label="Add words from paragraph*")
+        edit_menu.add_command(label="Add Word", command=lambda: AddWordWin(self.root))
+        edit_menu.add_command(label="Add Words from Paragraph*")
         menu_bar.add_cascade(label="Edit", menu=edit_menu)
 
         # Settings Menu
         edit_menu = tk.Menu(menu_bar, tearoff=0)
-        edit_menu.add_command(label="Set API key*")
+        edit_menu.add_command(label="Model Setting*", command=lambda: SetModelWin(self.root))
         edit_menu.add_command(label="APP Preference*")
         edit_menu.add_command(label="Profile Preference*")
         menu_bar.add_cascade(label="Settings", menu=edit_menu)
@@ -66,10 +65,20 @@ class App:
 
         self.root.config(menu=menu_bar)
 
-
+        self.root.after(10,self.after)
+    
+    def after(self):
         if len(self.profile_names) == 0:
             create_profile_win = CreateProfileWin(self.root)
             create_profile_win.focus_set()
+        
+        if ((not self.config["login_with"] in ("main_profile", "last_profile")
+        ) or (
+            self.config["login_with"] == "main_profile" and self.config["main_profile"] is None
+        ) or (
+            self.config["login_with"] == "last_profile" and self.config["last_profile"] is None
+        )) and len(self.profile_names) > 0:
+            win = SwitchProfileWin(self.root)
 
     @property
     def name(self):
@@ -108,12 +117,17 @@ class App:
             json.dump(vocabs, f, indent=4)
 
     def llm_reply(self, user_message, *system_messages):
+        if self.config["model"]["api_key"] is None:
+            # Open set model window
+            ...
+            return
+        llm_client = Mistral(config["model"]["api_key"])
         messeges = [
             {"role": "system", "content": msg} for msg in system_messages
         ] + [{"role": "user", "content": user_message}]
         print(messeges)
-        chat_response = self.llm_client.chat.complete(
-            model=self.config["model"],
+        chat_response = llm_client.chat.complete(
+            model=self.config["model"]["name"],
             messages=messeges,
             temperature=0
         ).choices[0].message.content
@@ -126,12 +140,6 @@ class App:
         return self.llm_reply(user_message, self.config["system_prompts"]["word_definition"])
 
 if __name__ == "__main__":
-    # Load LLM client
-    load_dotenv()
-    api_key = os.getenv("API_KEY")
-    print(api_key)
-    llm_client = Mistral(api_key)
-
     # Load configuration file
     with open('config.json','r') as f:
         config = json.load(f)
@@ -141,14 +149,5 @@ if __name__ == "__main__":
         os.makedirs(path, exist_ok=True)
     
     # Start the App
-    app = App(config, llm_client)
+    app = App(config)
     app.root.mainloop()
-
-'''chat_response = client.chat.complete(
-    model=model,
-    messages=[
-        {"role": "system", "content": system_message},
-        {"role": "user", "content": user_message},
-    ],
-    temperature=0
-).choices[0].message.content'''

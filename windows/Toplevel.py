@@ -11,12 +11,12 @@ import re, json
 
 import utilities
 
-
 class Toplevel(tk.Toplevel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.transient()
         self.grab_set()
+        self.focus()
 
     @property
     def app(self):
