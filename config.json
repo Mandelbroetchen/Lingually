@@ -5,7 +5,9 @@
         "api_key": "xhhFwIHu1vqFzaa3nCzptBZOZjEe7Dwl",
         "tempreture": 3
     },
+
     "about": "https://github.com/Mandelbroetchen/Lingually",
+    "discord": "https://discord.gg/YK5xvYXf5f",
 
     "login_with": null,
     "main_profile": null,
@@ -92,6 +94,6 @@
 
     "system_prompts":{
         "simple_reply": "Answer concisely, as few words as possible. ",
-        "word_definition": "Give a concise definition of the word. Use as few sentences as possible. Don't use any unecessary sentences. Imitate the definition of a dictionary. Use bullet points to demonstrate multiple definitions. "
+        "word_definition": "- Give a concise definition of the word. \n- Use as few sentences as possible. \n- Don't use any unecessary sentences. \n- Mimic the definition from a dictionary. \n- Use numbering like \"1.\", \"2.\", ... to demonstrate multiple definitions. "
     }
 }

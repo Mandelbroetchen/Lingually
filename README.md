@@ -65,28 +65,7 @@ Ensure you have Python installed on your system.
 - `SwitchProfileWin.py` - Allows switching between user profiles.
 - `Toplevel.py` - A base class for modal windows.
 
-## Contributing
+## Todos
 
-1. Fork the repository.
-2. Create a new branch: 
-   ```
-   git checkout -b feature-branch
-   ```
-3. Make your changes and commit:
-   ```
-   git commit -m "Description of changes"
-   ```
-4. Push the branch:
-   ```
-   git push origin feature-branch
-   ```
-5. Open a Pull Request.
+- log files
 
-## License
-
-This project is licensed under the MIT License.
-
-## Acknowledgments
-
-- Uses **Mistral AI** for language model integration.
-- Built with **Tkinter** for the GUI.

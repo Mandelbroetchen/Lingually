@@ -125,7 +125,6 @@ class App:
         messeges = [
             {"role": "system", "content": msg} for msg in system_messages
         ] + [{"role": "user", "content": user_message}]
-        print(messeges)
         chat_response = llm_client.chat.complete(
             model=self.config["model"]["name"],
             messages=messeges,
