@@ -17,7 +17,7 @@ class SwitchProfileWin(Toplevel):
         super().__init__(parent)
         self._title = title
         self.title(self._title)
-        self.geometry('480x320')
+        self.geometry(f'320x{50*(1+len(self.app.profile_names))}')
 
         padx, pady = 2, 2
 
